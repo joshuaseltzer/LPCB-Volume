@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the GitHub URL for gpio_volume_control.sh
-GITHUB_URL="[INSERTGITHERE]/gpio_volume_control.sh"
+GITHUB_URL="https://raw.githubusercontent.com/RySe96/LPCB-Volume/main/gpio_volume_control.sh"
 
 # Destination for the gpio control script
 SCRIPT_DIR="/userdata/system/scripts"
