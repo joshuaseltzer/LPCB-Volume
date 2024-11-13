@@ -38,11 +38,11 @@ pi.set_mode(VOLUME_DOWN_PIN, pigpio.INPUT)
 pi.set_pull_up_down(VOLUME_DOWN_PIN, pigpio.PUD_UP)
 
 def volume_up():
-    os.system("amixer sset 'Master' 5%+")
+    os.system("batocera-audio setSystemVolume +5")
     print("Volume up")
 
 def volume_down():
-    os.system("amixer sset 'Master' 5%-")
+    os.system("batocera-audio setSystemVolume -5")
     print("Volume down")
 
 try:
