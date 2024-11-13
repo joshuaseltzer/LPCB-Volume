@@ -35,11 +35,11 @@ if [[ -f "/userdata/system/gpionext-init.sh" ]];  then
 fi
 
 mkdir -p /userdata/system/lpcb/init
-curl -kLo /userdata/system/lpcb/init/gpionext-init.sh https://raw.githubusercontent.com/ACustomArcade/batocera-lpcb/main/userdata/system/gpionext-init.sh
+curl -kLo /userdata/system/lpcb/init/gpionext-init.sh https://raw.githubusercontent.com/RySe96/LPCB-Volume/main/userdata/system/gpionext-init.sh
 chmod +x /userdata/system/lpcb/init/gpionext-init.sh
 grep -qxF '/userdata/system/lpcb/init/gpionext-init.sh $1' /userdata/system/custom.sh 2> /dev/null || echo '/userdata/system/lpcb/init/gpionext-init.sh $1' >> /userdata/system/custom.sh
 
-curl -kLo /userdata/system/GPIOnext/config/config.db https://github.com/ACustomArcade/batocera-lpcb/raw/main/userdata/system/GPIONext/config/config.db
+curl -kLo /userdata/system/GPIOnext/config/config.db https://github.com/RySe96/LPCB-Volume/raw/main/userdata/system/GPIONext/config/config.db
 
 echo 17 2>/dev/null > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio17/direction
@@ -63,16 +63,6 @@ fi
 /userdata/system/lpcb/init/gpionext-init.sh start
 
 echo "GPIOnext installed!"
-
-echo "Detecting Pixelcade..."
-# let's detect if Pixelcade is connected
-if ls /dev/ttyACM0 | grep -q '/dev/ttyACM0'; then
-   echo "Pixelcade LED Marquee Detected!"
-   echo "Running the Pixelcade installer..."
-   bash <(curl -s https://raw.githubusercontent.com/alinke/pixelcade-linux-builds/main/install-scripts/setup-batocera.sh)
-else
-   echo "Sorry, Pixelcade LED Marquee was not detected. If you have one, please ensure Pixelcade is USB connected to your Pi and the toggle switch on the Pixelcade board is pointing towards USB, exiting..."
-fi
 
 #let's write the version so the next time the user can try and know if they need to upgrade
 echo $version > /userdata/system/lpcb/lpcb-version
